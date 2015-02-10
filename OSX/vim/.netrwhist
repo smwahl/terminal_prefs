@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/swahl/code/cider_2014/core_model/mars_solidus_code'
+let g:netrw_dirhist_2='/Users/swahl/dat/pleiades/sample_potentials'
+let g:netrw_dirhist_3='/Users/swahl/code/cider_2014/core_model'
+let g:netrw_dirhist_4='/Users/swahl/code/cider_2014/mercury'
+let g:netrw_dirhist_5='/Users/swahl/code/cider_2014/mercury/heat_flux'
+let g:netrw_dirhist_6='/Users/swahl/code/cider_2014/mercury/entropy'

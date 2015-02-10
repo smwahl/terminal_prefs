@@ -1,0 +1,19 @@
+[user]
+	name = Sean Wahl
+	email = swahl.smw@gmail.com
+[core]
+	editor = vim
+[color]
+	ui = auto
+[credential]
+	helper = cache --timeout=7200
+[alias]
+	slog = log --oneline --topo-order --graph
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[push]
+	default = matching

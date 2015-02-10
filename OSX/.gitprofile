@@ -1,0 +1,147 @@
+# System-wide .profile for sh(1)
+# source ~/.bashrc
+# source ~/.bash_profile
+
+if [ -x /usr/libexec/path_helper ]; then
+	eval `/usr/libexec/path_helper -s`
+fi
+
+if [ "${BASH-no}" != "no" ]; then
+	[ -r /etc/bashrc ] && . /etc/bashrc
+fi
+
+#say -v kathy "Its a unix system"
+
+export GIT_PS1_SHOWDIRTYSTATE=1
+
+function parse_git_dirty {
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+}
+function parse_git_branch {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
+}
+# export PS1='\u@\h \[\033[1;33m\]\w\[\033[0m\]$(parse_git_branch)$ '
+#   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+# function parse_git_branch {
+#   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+#   }
+
+#prompt
+PS1="[\t][\h:\W]\$(parse_git_branch)\$ "
+
+set -o vi
+bind -m vi-insert "\C-l":clear-screen
+
+#alias cdm="cd /Volumes/FantomHD/Music/iTunes/iTunes\ Music/"
+#alias vlc="/Applications/VLC_1.1.0.app/Contents/MacOS/VLC -I rc"
+#alias vim="mvim -v"
+#alias vi="mvim -v"
+#alias gvim="mvim"
+#alias xbs="~/bin/xbsa"
+
+alias units="/Users/swahl/bin/units -f /Users/swahl/units.dat"
+alias units2="units -o %.12e"
+
+
+#alias matlab="sudo /Applications/MATLAB_R2012a.app/bin/matlab -nojvm"
+# export EDITOR="mvim"
+export EDITOR="vim"
+
+
+alias fdate='date "+%Y_%m_%d"'
+
+alias ll="ls -lFGtr"
+alias ls="ls -hFG"
+export CLICOLOR=1
+export LSCOLORS=gxbxcxdxCxegedabagacad
+alias la="ls -FA"
+alias rm="rm -i"
+
+alias df="df -h"
+
+alias psa="ps -A"
+alias psm="ps -A -m"
+
+alias k9="kill -9"
+
+alias cleartex="rm -f .aux *.bbl *.blg *.log"
+
+# Remote login
+# alias x11="open /Applications/Utilities/XQuartz.app/"
+
+# export DISPLAY=:0
+alias sshb="ssh -Y swahl@baribu.geo.berkeley.edu"
+alias sshp="ssh -Y smwahl@sfe2.nas.nasa.gov"
+alias sshd="ssh -Y smwahl@login.nccs.nasa.gov"
+alias sshs="ssh -Y swahl@sirens.berkeley.edu"
+alias sshh="ssh -Y swahl@henyey.geo.berkeley.edu"
+baribu="swahl@baribu.geo.berkeley.edu"
+dresden="swahl@dresden.geo.berkeley.edu:/media/data3/Sean_Wahl_leipzig_backup"
+sirens="swahl@sirens.berkeley.edu"
+henyey="swahl@henyey.geo.berkeley.edu"
+
+#alias dresdenbackup="rsync -avzu --delete --exclude /Library --exclude /Movies --exclude /Applications --exclude /Downloads --exclude /Pictures --exclude Texts --exclude /Documents/Misc --exclude /.Trash --exclude /Documents/Mendeley\ Desktop ~/ swahl@dresden.geo.berkeley.edu:/media/data3/Sean_Wahl_leipzig_backup"
+##
+# Your previous /Users/swahl/.profile file was backed up as /Users/swahl/.profile.macports-saved_2011-09-10_at_14:09:24
+##
+
+# MacPorts Installer addition on 2011-09-10_at_14:09:24: adding an appropriate PATH variable for use with MacPorts.
+#export PATH=/Users/swahl/fftw/include:/Users/swahl/fftw/lib:/Library/Frameworks/Python.framework/Versions/2.6/bin:/opt/local/bin:/opt/local/sbin:/usr/local:/Users/swahl/Applications/VisIt/bin:$PATH
+#Finished adapting your PATH environment variable for use with MacPorts.
+
+# For VisIt visuallization software
+#export PATH=~/VisIt/bin:$PATH
+#probably wrong syntax put in .cshrc instead (dont know if that is even used)
+
+# Setting PATH for Python 2.7
+# The orginal version is saved in .profile.pysave
+#PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
+#export PATH
+
+# Setting PATH for MacPython 2.6
+# The orginal version is saved in .profile.pysave
+#PATH="/Library/Frameworks/Python.framework/Versions/2.6/bin:${PATH}"
+
+export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/local:/usr/bin:$PATH
+
+##
+# Your previous /Users/swahl/.profile file was backed up as /Users/swahl/.profile.macports-saved_2012-03-21_at_02:35:33
+##
+
+# MacPorts Installer addition on 2012-03-21_at_02:35:33: adding an appropriate PATH variable for use with MacPorts.
+export PATH=/opt/local/bin:/opt/local/sbin:/Users/swahl/scripts:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+
+# Setting PATH for Python 2.7
+# The orginal version is saved in .profile.pysave
+# PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
+#PATH="$PATH:$HOME/.rvm/bin"
+
+# export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/lib
+
+export PATH="$PATH:/Users/swahl/bin"
+export PATH="$PATH:/Users/swahl/code/python/eos_fitting/"
+
+
+# export matlabroot="/Applications/MATLAB_R2012a.app"
+#  export LD_LIBRARY_PATH=/usr/local/lib:${matlabroot}/bin/:${matlabroot}/runtime/maci64:${matlabroot}/sys/os/maci64:${matlabroot}/bin/maci64
+# export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/lib:/lib:/usr
+# # /lib:${matlabroot}/bin/maci64
+# 
+# export PYTHONPATH=$HOME/ase:$PYTHONPATH
+# export PATH=$HOME/ase/tools:$PATH
+
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# Setting PATH for Anaconda Python 2.7
+export PATH="/Users/swahl/anaconda/bin:$PATH"
+
+PYTHONPATH="${PYTHONPATH}:/Users/swahl/anaconda/lib/python2.7/site-packages/"
+export PYTHONPATH
+
+#export PYTHONPATH="/Users/swahl/code/python/PlLayer:$PYTHONPATH"
+
+export PATH="$PATH:/Applications/Xcode.app/Contents/Developer/usr/bin/"
+
+export PATH="$PATH:/Users/swahl/src"
